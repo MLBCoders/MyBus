@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,18 +15,10 @@ import android.view.ViewGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SearchBusFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SearchBusFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SearchBusFragment extends Fragment {
 
     public static final int JOURNEY_FROM = 1;
@@ -33,8 +26,10 @@ public class SearchBusFragment extends Fragment {
     public static final int TIME_FROM = 3;
     public static final int TIME_TO = 4;
 
-    private String mParam1;
-    private String mParam2;
+    @BindView(R.id.picker_journey_from) TextInputEditText picker_journey_from;
+    @BindView(R.id.picker_journey_to) TextInputEditText picker_journey_to;
+    @BindView(R.id.picker_time_range_from) TextInputEditText picker_time_range_from;
+    @BindView(R.id.picker_time_range_to) TextInputEditText picker_time_range_to;
 
     public SearchBusFragment() {
         // Required empty public constructor
@@ -92,7 +87,6 @@ public class SearchBusFragment extends Fragment {
         DialogFragment timePicker = new TimePickerFragment();
         timePicker.setTargetFragment(getThisFragment(), TIME_FROM);
         timePicker.show(getActivity().getSupportFragmentManager(),"FromTimePicker");
-
     }
 
     @OnClick(R.id.picker_time_range_to)
@@ -118,11 +112,13 @@ public class SearchBusFragment extends Fragment {
                     Bundle fromTimeBundle = data.getExtras();
                     String selectedFromTime = fromTimeBundle.getString("time");
                     Toast.makeText(getActivity(),"Selected from time : " + selectedFromTime,Toast.LENGTH_SHORT).show();
+                    picker_time_range_from.setText(selectedFromTime);
                     break;
                 case TIME_TO:
                     Bundle toTimeBundle = data.getExtras();
                     String selectedToTime = toTimeBundle.getString("time");
                     Toast.makeText(getActivity(),"Selected to time : " + selectedToTime,Toast.LENGTH_SHORT).show();
+                    picker_journey_to.setText(selectedToTime);
                     break;
             }
         }

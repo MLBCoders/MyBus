@@ -118,7 +118,7 @@ public class SearchBusFragment extends Fragment {
                     Bundle toTimeBundle = data.getExtras();
                     String selectedToTime = toTimeBundle.getString("time");
                     Toast.makeText(getActivity(),"Selected to time : " + selectedToTime,Toast.LENGTH_SHORT).show();
-                    picker_journey_to.setText(selectedToTime);
+                    picker_time_range_to.setText(selectedToTime);
                     break;
             }
         }

@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(this,"Settings Selected",Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if (id == R.id.action_about) {
+            Toast.makeText(this,"About Selected",Toast.LENGTH_SHORT).show();
             return true;
         }
 
@@ -140,12 +146,17 @@ public class MainActivity extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position){
-                case 1:
+                case 0:
                     return SearchBusFragment.newInstance();
+                case 1:
+                    return ScheduleFragment.newInstance();
                 case 2:
+                    return NearbyBusFragment.newInstance();
+                case 3:
+                    return BusDetailsSearchFragment.newInstance();
+                default:
                     return PlaceholderFragment.newInstance(position + 1);
             }
-            return null;
         }
 
         @Override

@@ -12,8 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +33,8 @@ public class SearchBusFragment extends Fragment {
     @BindView(R.id.picker_journey_to) TextInputEditText picker_journey_to;
     @BindView(R.id.picker_time_range_from) TextInputEditText picker_time_range_from;
     @BindView(R.id.picker_time_range_to) TextInputEditText picker_time_range_to;
+
+    ArrayList<Button> dateBtns = new ArrayList<>();
 
     public SearchBusFragment() {
         // Required empty public constructor
@@ -121,6 +126,18 @@ public class SearchBusFragment extends Fragment {
                     picker_time_range_to.setText(selectedToTime);
                     break;
             }
+        }
+    }
+
+    @OnClick({R.id.btn_date_mon,R.id.btn_date_tue,R.id.btn_date_wed,R.id.btn_date_Thu,R.id.btn_date_Fri,R.id.btn_date_Sat,R.id.btn_date_Sun})
+    public void btnDateMonClicked(Button button){
+        Log.d("MYBUS","btn date selected : " + button.getText().toString());
+        if(!dateBtns.contains(button)){
+            dateBtns.add(button);
+            button.setBackgroundColor(getResources().getColor(R.color.colorDateBtnSelected));
+        }else{
+            dateBtns.remove(button);
+            button.setBackgroundColor(getResources().getColor(R.color.colorDateBtnUnSelected));
         }
     }
 }

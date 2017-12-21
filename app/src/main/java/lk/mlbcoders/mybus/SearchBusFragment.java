@@ -3,11 +3,13 @@ package lk.mlbcoders.mybus;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -59,6 +62,12 @@ public class SearchBusFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_search_bus, container, false);
         ButterKnife.bind(this,view);
+
+        int[] dateBts = {R.id.btn_date_mon,R.id.btn_date_tue,R.id.btn_date_wed,R.id.btn_date_Thu,R.id.btn_date_Fri,R.id.btn_date_Sat,R.id.btn_date_Sun};
+        for (int i = 0 ; i<dateBts.length ; i++){
+            ((Button) view.findViewById(dateBts[i])).getBackground().setColorFilter(ContextCompat.getColor(getContext(), R.color.colorDateBtnUnSelected), PorterDuff.Mode.MULTIPLY);
+        }
+
         return view;
     }
 
@@ -134,10 +143,10 @@ public class SearchBusFragment extends Fragment {
         Log.d("MYBUS","btn date selected : " + button.getText().toString());
         if(!dateBtns.contains(button)){
             dateBtns.add(button);
-            button.setBackgroundColor(getResources().getColor(R.color.colorDateBtnSelected));
+            button.getBackground().setColorFilter(ContextCompat.getColor(getContext(), R.color.colorDateBtnSelected), PorterDuff.Mode.MULTIPLY);
         }else{
             dateBtns.remove(button);
-            button.setBackgroundColor(getResources().getColor(R.color.colorDateBtnUnSelected));
+            button.getBackground().setColorFilter(ContextCompat.getColor(getContext(), R.color.colorDateBtnUnSelected), PorterDuff.Mode.MULTIPLY);
         }
     }
 }

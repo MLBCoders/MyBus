@@ -25,4 +25,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <!--route spinner in fragment_schedule-->
+    <string name="route_prompt">Select the Route</string>
+
+    <string-array name="route_arrays">
+        <item>Route 177 - Kaduwela Kollupitiya</item>
+        <item>Route 170 - Kaduwela Kotuwa</item>
+        <item>Route 190 - Kaduwela Malabe</item>
+        <item>Riute 163 - Kaduwela Biyagama</item>
+        <item>Route 152 - Kaduwela MIrihana</item>
+    </string-array>
+
 </resources>

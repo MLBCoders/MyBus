@@ -4,9 +4,17 @@
     android:layout_height="match_parent"
     tools:context="lk.mlbcoders.mybus.ScheduleFragment">
 
-    <TextView
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Schedule Fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="52dp"
+        android:entries="@array/route_arrays"
+        android:prompt="@string/route_prompt"
+        android:spinnerMode="dialog"
+        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:gravity="center_vertical"/>
 
 </FrameLayout>

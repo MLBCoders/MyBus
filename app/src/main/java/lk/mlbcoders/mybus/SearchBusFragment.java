@@ -85,7 +85,9 @@ public class SearchBusFragment extends Fragment {
     public void pickerJourneyFromClicked(View button){
         Log.d("MYBUS","Journey from clicked");
         Toast.makeText(getActivity(),"Select Journey from",Toast.LENGTH_SHORT).show();
-
+//        DialogFragment journeyFrom = new SearchBusHaltFragment();
+//        journeyFrom.setTargetFragment(getThisFragment(), JOURNEY_FROM);
+//        journeyFrom.show(getActivity().getSupportFragmentManager(),"JourneyFromPicker");
     }
 
     @OnClick(R.id.picker_journey_to)

@@ -5,4 +5,9 @@
     <color name="colorAccent">#3d5afe</color>
     <color name="colorDateBtnSelected">#3d5afe</color>
     <color name="colorDateBtnUnSelected">#cfd8dc</color>
+
+    <color name="colorDarkGray">#212227</color>
+    <color name="colorCreamWhite">#f3f3f3</color>
+    <color name="colorMatGrey">#d6d6d6</color>
+    <color name="colorWhite">#ffffff</color>
 </resources>

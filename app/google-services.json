@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1008564533858",
+    "firebase_url": "https://mybus-1394f.firebaseio.com",
+    "project_id": "mybus-1394f",
+    "storage_bucket": "mybus-1394f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008564533858:android:2d6268a31f444593",
+        "android_client_info": {
+          "package_name": "lk.mlbcoders.mybus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008564533858-mcpgkdthu2cv45g7lkdcvfda3r37s8ji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lk.mlbcoders.mybus",
+            "certificate_hash": "f1d170501a2587f298a089e11182292448460122"
+          }
+        },
+        {
+          "client_id": "1008564533858-k54tnm005i9r4spd4ptfaasln84lesj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2bXvjIDvHWV6ecriivUfnlVKkR28vfj8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008564533858-k54tnm005i9r4spd4ptfaasln84lesj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

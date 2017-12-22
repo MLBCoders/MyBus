@@ -9,4 +9,11 @@
 
     <dimen name="search_bus_date_text_size">10sp</dimen>
     <dimen name="margin_form_start_end">10dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="devider_height4">40dp</dimen>
+
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="text_18sp">18sp</dimen>
 </resources>

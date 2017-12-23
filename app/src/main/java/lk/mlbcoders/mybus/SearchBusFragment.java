@@ -109,7 +109,8 @@ public class SearchBusFragment extends Fragment {
         args.putString("start_time",picker_time_range_from.getText().toString());
         args.putString("end_time",picker_time_range_to.getText().toString());
         args.putString("duration","40 min");
-        fm.beginTransaction().replace(R.id.search_bus_main_frame, searchbusDetailsFragment).addToBackStack(null).commit();
+        searchbusDetailsFragment.setArguments(args);
+        searchbusDetailsFragment.show(fm,"Bus details");
     }
 
     private Fragment getThisFragment(){

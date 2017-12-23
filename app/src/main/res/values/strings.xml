@@ -109,4 +109,6 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
+    <string name="about_string">This Application consists of four tabs called Search , Schedule , Nearby, Details. </string>
+
 </resources>

@@ -4,6 +4,7 @@ package lk.mlbcoders.mybus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchbusDetailsFragment extends Fragment {
+public class SearchbusDetailsFragment extends DialogFragment {
 
 
     @BindView(R.id.txt_results_found) TextView txt_results_found;

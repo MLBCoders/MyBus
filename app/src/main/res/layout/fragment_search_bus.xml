@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="lk.mlbcoders.mybus.SearchBusFragment">
+    tools:context="lk.mlbcoders.mybus.SearchBusFragment"
+    android:id="@+id/search_bus_main_frame">
 
     <LinearLayout
         android:layout_width="match_parent"

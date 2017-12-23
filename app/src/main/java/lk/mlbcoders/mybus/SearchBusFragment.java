@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +40,10 @@ public class SearchBusFragment extends Fragment {
 
     ArrayList<Button> dateBtns = new ArrayList<>();
 
+    FragmentManager fm;
+    ArrayList<String> busHalts = new ArrayList<>();
+
+
     public SearchBusFragment() {
         // Required empty public constructor
     }
@@ -63,18 +68,48 @@ public class SearchBusFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_search_bus, container, false);
         ButterKnife.bind(this,view);
 
+        resetBusHaltList();
+
         int[] dateBts = {R.id.btn_date_mon,R.id.btn_date_tue,R.id.btn_date_wed,R.id.btn_date_Thu,R.id.btn_date_Fri,R.id.btn_date_Sat,R.id.btn_date_Sun};
         for (int i = 0 ; i<dateBts.length ; i++){
             ((Button) view.findViewById(dateBts[i])).getBackground().setColorFilter(ContextCompat.getColor(getContext(), R.color.colorDateBtnUnSelected), PorterDuff.Mode.MULTIPLY);
+            ((Button) view.findViewById(dateBts[i])).setTextColor(getResources().getColor(R.color.colorBlack));
         }
 
+        fm = getActivity().getSupportFragmentManager();
+
         return view;
+    }
+
+    public void resetBusHaltList(){
+        busHalts.clear();
+        busHalts.add("Kaduwela");
+        busHalts.add("Kothalawala");
+        busHalts.add("Pittugala");
+        busHalts.add("Malabe");
+        busHalts.add("Thalahena");
+        busHalts.add("Koswatta");
+        busHalts.add("Battaramulla");
+        busHalts.add("Rajagiriya");
+        busHalts.add("Kollupitiya");
     }
 
     @OnClick(R.id.btn_search_bus_route)
     public void btnSearchBusRouteClicked(View button){
         Log.d("MYBUS","Btn search clicked");
         Toast.makeText(getActivity(),"Searching bus route",Toast.LENGTH_SHORT).show();
+
+        SearchbusDetailsFragment searchbusDetailsFragment = new SearchbusDetailsFragment();
+        Bundle args = new Bundle();
+        args.putInt("result_count",1);
+        args.putString("route_no","177");
+        args.putString("start_location",picker_journey_from.getText().toString());
+        args.putString("end_location",picker_journey_to.getText().toString());
+        args.putString("type","Daily");
+        args.putString("start_time",picker_time_range_from.getText().toString());
+        args.putString("end_time",picker_time_range_to.getText().toString());
+        args.putString("duration","40 min");
+        fm.beginTransaction().replace(R.id.search_bus_main_frame, searchbusDetailsFragment).addToBackStack(null).commit();
     }
 
     private Fragment getThisFragment(){
@@ -85,15 +120,26 @@ public class SearchBusFragment extends Fragment {
     public void pickerJourneyFromClicked(View button){
         Log.d("MYBUS","Journey from clicked");
         Toast.makeText(getActivity(),"Select Journey from",Toast.LENGTH_SHORT).show();
-//        DialogFragment journeyFrom = new SearchBusHaltFragment();
-//        journeyFrom.setTargetFragment(getThisFragment(), JOURNEY_FROM);
-//        journeyFrom.show(getActivity().getSupportFragmentManager(),"JourneyFromPicker");
+        resetBusHaltList();
+        if(picker_journey_to.length()>0){
+            busHalts.remove(picker_journey_to.getText().toString());
+        }
+        BusStationHaltDialog busStationHaltDialog = BusStationHaltDialog.createNewInstance("Select Journey Start",busHalts);
+        busStationHaltDialog.setTargetFragment(getThisFragment(), JOURNEY_FROM);
+        busStationHaltDialog.show(fm,"BusHaltJourneyFrom");
     }
 
     @OnClick(R.id.picker_journey_to)
     public void pickerJourneyToClicked(View button){
         Log.d("MYBUS","Journey to clicked");
         Toast.makeText(getActivity(),"Select Journey to",Toast.LENGTH_SHORT).show();
+        resetBusHaltList();
+        if(picker_journey_from.length()>0){
+            busHalts.remove(picker_journey_from.getText().toString());
+        }
+        BusStationHaltDialog busStationHaltDialog = BusStationHaltDialog.createNewInstance("Select Journey End",busHalts);
+        busStationHaltDialog.setTargetFragment(getThisFragment(), JOURNEY_TO);
+        busStationHaltDialog.show(fm,"BusHaltJourneyTo");
     }
 
     @OnClick(R.id.picker_time_range_from)
@@ -102,7 +148,7 @@ public class SearchBusFragment extends Fragment {
         Toast.makeText(getActivity(),"Select time range from",Toast.LENGTH_SHORT).show();
         DialogFragment timePicker = new TimePickerFragment();
         timePicker.setTargetFragment(getThisFragment(), TIME_FROM);
-        timePicker.show(getActivity().getSupportFragmentManager(),"FromTimePicker");
+        timePicker.show(fm,"FromTimePicker");
     }
 
     @OnClick(R.id.picker_time_range_to)
@@ -121,8 +167,16 @@ public class SearchBusFragment extends Fragment {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case JOURNEY_FROM:
+                    Bundle fromJourneyBundle = data.getExtras();
+                    String selectedFromJourney = fromJourneyBundle.getString("selected");
+                    Toast.makeText(getActivity(),"Selected from journey : " + selectedFromJourney,Toast.LENGTH_SHORT).show();
+                    picker_journey_from.setText(selectedFromJourney);
                     break;
                 case JOURNEY_TO:
+                    Bundle toJourneyBundle = data.getExtras();
+                    String selectedToJourney = toJourneyBundle.getString("selected");
+                    Toast.makeText(getActivity(),"Selected to journey : " + selectedToJourney,Toast.LENGTH_SHORT).show();
+                    picker_journey_to.setText(selectedToJourney);
                     break;
                 case TIME_FROM:
                     Bundle fromTimeBundle = data.getExtras();
@@ -146,9 +200,11 @@ public class SearchBusFragment extends Fragment {
         if(!dateBtns.contains(button)){
             dateBtns.add(button);
             button.getBackground().setColorFilter(ContextCompat.getColor(getContext(), R.color.colorDateBtnSelected), PorterDuff.Mode.MULTIPLY);
+            button.setTextColor(getResources().getColor(R.color.colorCreamWhite));
         }else{
             dateBtns.remove(button);
             button.getBackground().setColorFilter(ContextCompat.getColor(getContext(), R.color.colorDateBtnUnSelected), PorterDuff.Mode.MULTIPLY);
+            button.setTextColor(getResources().getColor(R.color.colorBlack));
         }
     }
 }

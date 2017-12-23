@@ -3,10 +3,19 @@ package lk.mlbcoders.mybus;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -18,6 +27,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class BusDetailsSearchFragment extends Fragment {
+
+    @BindView(R.id.display_result) TextView display_result;
 
     public BusDetailsSearchFragment() {
         // Required empty public constructor
@@ -37,7 +48,10 @@ public class BusDetailsSearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bus_details_search, container, false);
+        View view =  inflater.inflate(R.layout.fragment_bus_details_search, container, false);
+        ButterKnife.bind(this,view);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -52,6 +66,12 @@ public class BusDetailsSearchFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @OnClick(R.id.btn_find)
+    public void showRouteDetails(View button){
+        display_result.setText(" Start Location: Kollupitiya \n\t\t\t\t\t\t\t\t Colombo Public Library \n\t\t\t\t\t\t\t\t Kanatta \n\t\t\t\t\t\t\t\t Rajagiriya \n\t\t\t\t\t\t\t\t Ethulkotte \n\t\t\t\t\t\t\t\t Baththaramulla \n\t\t\t\t\t\t\t\t Koswatta \n\t\t\t\t\t\t\t\t Thalahena \n\t\t\t\t\t\t\t\t Malabe \n\t\t\t\t\t\t\t\t Pittugala \n\t\t\t\t\t\t\t\t Kothalawala \n End Location: Kaduwela \n\n\n Other Details: \n Buses Available from 6.00 AM to 8.00 PM daily \n Ticket Price: LKR 35.00 (Normal)/ LKR 80.00 (A/C) \n Journy Time: 45 Mins");
+        Log.d("MYBUS","Kollupitiya");
     }
 
     /**

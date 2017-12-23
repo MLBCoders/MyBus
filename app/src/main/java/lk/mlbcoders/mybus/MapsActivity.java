@@ -77,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         googleMap.moveCamera(cameraPosition);
         googleMap.animateCamera(cameraPosition);
-        
+
         PolylineOptions polylineOptions = new PolylineOptions()
                 .geodesic(true)
                 .color(Color.BLUE)

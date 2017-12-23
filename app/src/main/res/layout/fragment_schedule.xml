@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     tools:context="lk.mlbcoders.mybus.ScheduleFragment">
 
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:orientation="vertical">
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
@@ -17,4 +20,26 @@
         android:checkMark="?android:attr/listChoiceIndicatorSingle"
         android:gravity="center_vertical"/>
 
+    <Button
+        android:id="@+id/btn_find"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Find" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/display_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="visible" />
+    </LinearLayout>
 </FrameLayout>

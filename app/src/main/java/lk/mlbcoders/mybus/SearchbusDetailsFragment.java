@@ -69,7 +69,7 @@ public class SearchbusDetailsFragment extends DialogFragment {
         String duration = getArguments().getString("duration");
         txt_details_duration.setText(duration);
 
-        txt_details_duration.setText("Rs. 39.00");
+        txt_ticket_price.setText("Rs. 39.00");
 
         return view;
     }

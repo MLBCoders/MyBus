@@ -28,7 +28,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
  * Use the {@link NearbyBusFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NearbyBusFragment extends Fragment implements OnMapReadyCallback {
+public class NearbyBusFragment extends Fragment  {
 
 
     private GoogleMap mMap;
@@ -47,12 +47,12 @@ public class NearbyBusFragment extends Fragment implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         SupportMapFragment mapFragment = (SupportMapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+//        mapFragment.getMapAsync(getThisFragment());
     }
-
-    private Fragment getThisFragment() {
-        return this;
-    }
+//
+//    private OnMapReadyCallback getThisFragment() {
+//        return this;
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,35 +87,35 @@ public class NearbyBusFragment extends Fragment implements OnMapReadyCallback {
     public interface OnFragmentInteractionListener {
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng startLocation = new LatLng(6.9360717, 79.9809851);
-        mMap.addMarker(new MarkerOptions().position(startLocation).title("Kaduwela"));
-
-        LatLng endLocation = new LatLng(6.9236094, 79.8811531);
-        mMap.addMarker(new MarkerOptions().position(endLocation).title("Kollupitiya"));
-
-        LatLngBounds sri_Lanka = new LatLngBounds(new LatLng(5.87, 80.37), new LatLng(9.94, 80.90));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(sri_Lanka, 0));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(sri_Lanka, 0));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(startLocation));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(endLocation));
-
-        CameraUpdate cameraPosition = CameraUpdateFactory.newLatLngZoom(startLocation, 10);
-
-        googleMap.moveCamera(cameraPosition);
-        googleMap.animateCamera(cameraPosition);
-
-        PolylineOptions polylineOptions = new PolylineOptions()
-                .geodesic(true)
-                .color(Color.BLUE)
-                .width(10);
-
-        polylineOptions.add(startLocation);
-        polylineOptions.add(endLocation);
-    }
+//    @Override
+//    public void onMapReady(GoogleMap googleMap) {
+//        mMap = googleMap;
+//
+//        // Add a marker in Sydney and move the camera
+//        LatLng startLocation = new LatLng(6.9360717, 79.9809851);
+//        mMap.addMarker(new MarkerOptions().position(startLocation).title("Kaduwela"));
+//
+//        LatLng endLocation = new LatLng(6.9236094, 79.8811531);
+//        mMap.addMarker(new MarkerOptions().position(endLocation).title("Kollupitiya"));
+//
+//        LatLngBounds sri_Lanka = new LatLngBounds(new LatLng(5.87, 80.37), new LatLng(9.94, 80.90));
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(sri_Lanka, 0));
+//        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(sri_Lanka, 0));
+//
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(startLocation));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(endLocation));
+//
+//        CameraUpdate cameraPosition = CameraUpdateFactory.newLatLngZoom(startLocation, 10);
+//
+//        googleMap.moveCamera(cameraPosition);
+//        googleMap.animateCamera(cameraPosition);
+//
+//        PolylineOptions polylineOptions = new PolylineOptions()
+//                .geodesic(true)
+//                .color(Color.BLUE)
+//                .width(10);
+//
+//        polylineOptions.add(startLocation);
+//        polylineOptions.add(endLocation);
+//    }
 }

@@ -120,7 +120,7 @@ public class SearchBusFragment extends Fragment {
     @OnClick(R.id.picker_journey_from)
     public void pickerJourneyFromClicked(View button){
         Log.d("MYBUS","Journey from clicked");
-        Toast.makeText(getActivity(),"Select Journey from",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),"Select Journey from",Toast.LENGTH_SHORT).show();
         resetBusHaltList();
         if(picker_journey_to.length()>0){
             busHalts.remove(picker_journey_to.getText().toString());
@@ -133,7 +133,7 @@ public class SearchBusFragment extends Fragment {
     @OnClick(R.id.picker_journey_to)
     public void pickerJourneyToClicked(View button){
         Log.d("MYBUS","Journey to clicked");
-        Toast.makeText(getActivity(),"Select Journey to",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),"Select Journey to",Toast.LENGTH_SHORT).show();
         resetBusHaltList();
         if(picker_journey_from.length()>0){
             busHalts.remove(picker_journey_from.getText().toString());
@@ -146,7 +146,7 @@ public class SearchBusFragment extends Fragment {
     @OnClick(R.id.picker_time_range_from)
     public void pickerTimeRangeFromClicked(View button){
         Log.d("MYBUS","Time range from clicked");
-        Toast.makeText(getActivity(),"Select time range from",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),"Select time range from",Toast.LENGTH_SHORT).show();
         DialogFragment timePicker = new TimePickerFragment();
         timePicker.setTargetFragment(getThisFragment(), TIME_FROM);
         timePicker.show(fm,"FromTimePicker");
@@ -155,7 +155,7 @@ public class SearchBusFragment extends Fragment {
     @OnClick(R.id.picker_time_range_to)
     public void pickerTimeRangeToClicked(View button){
         Log.d("MYBUS","Time range to clicked");
-        Toast.makeText(getActivity(),"Select time range to",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),"Select time range to",Toast.LENGTH_SHORT).show();
         DialogFragment timePicker = new TimePickerFragment();
         timePicker.setTargetFragment(getThisFragment(), TIME_TO);
         timePicker.show(getActivity().getSupportFragmentManager(),"ToTimePicker");

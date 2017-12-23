@@ -101,7 +101,7 @@ public class SearchBusFragment extends Fragment {
 
         SearchbusDetailsFragment searchbusDetailsFragment = new SearchbusDetailsFragment();
         Bundle args = new Bundle();
-        args.putInt("result_count",1);
+        args.putString("result_count","01");
         args.putString("route_no","177");
         args.putString("start_location",picker_journey_from.getText().toString());
         args.putString("end_location",picker_journey_to.getText().toString());

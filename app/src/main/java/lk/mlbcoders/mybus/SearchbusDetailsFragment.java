@@ -30,6 +30,7 @@ public class SearchbusDetailsFragment extends DialogFragment {
     @BindView(R.id.txt_details_start_time) TextView txt_details_start_time;
     @BindView(R.id.txt_details_end_time) TextView txt_details_end_time;
     @BindView(R.id.txt_details_duration) TextView txt_details_duration;
+    @BindView(R.id.txt_ticket_price) TextView txt_ticket_price;
 
     public SearchbusDetailsFragment() {
         // Required empty public constructor
@@ -44,29 +45,31 @@ public class SearchbusDetailsFragment extends DialogFragment {
         View view =  inflater.inflate(R.layout.fragment_search_bus_details, container, false);
         ButterKnife.bind(this,view);
 
-        String result_count = String.valueOf(getArguments().getInt("result_count"));
+        String result_count = getArguments().getString("result_count");
         txt_results_found.setText(result_count);
 
         String route_no = getArguments().getString("route_no");
-        txt_details_route_no.setText(result_count);
+        txt_details_route_no.setText(route_no);
 
         String start_location = getArguments().getString("start_location");
-        txt_details_start_location.setText(result_count);
+        txt_details_start_location.setText(start_location);
 
         String end_location = getArguments().getString("end_location");
-        txt_details_end_location.setText(result_count);
+        txt_details_end_location.setText(end_location);
 
         String type = getArguments().getString("type");
-        txt_details_type.setText(result_count);
+        txt_details_type.setText(type);
 
         String start_time = getArguments().getString("start_time");
-        txt_details_start_time.setText(result_count);
+        txt_details_start_time.setText(start_time);
 
         String end_time = getArguments().getString("end_time");
-        txt_details_end_time.setText(result_count);
+        txt_details_end_time.setText(end_time);
 
         String duration = getArguments().getString("duration");
-        txt_details_duration.setText(result_count);
+        txt_details_duration.setText(duration);
+
+        txt_details_duration.setText("Rs. 39.00");
 
         return view;
     }

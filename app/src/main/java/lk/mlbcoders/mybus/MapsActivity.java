@@ -6,11 +6,13 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -64,9 +66,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng endLocation = new LatLng(6.9236094, 79.8811531);
         mMap.addMarker(new MarkerOptions().position(endLocation).title("Kollupitiya"));
 
+        LatLngBounds sri_Lanka = new LatLngBounds(new LatLng(5.87,80.37), new LatLng(9.94, 80.90));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(sri_Lanka,0));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(sri_Lanka,0));
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(startLocation));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(endLocation));
 
+        CameraUpdate cameraPosition = CameraUpdateFactory.newLatLngZoom(startLocation, 10);
 
+        googleMap.moveCamera(cameraPosition);
+        googleMap.animateCamera(cameraPosition);
+        
         PolylineOptions polylineOptions = new PolylineOptions()
                 .geodesic(true)
                 .color(Color.BLUE)

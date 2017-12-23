@@ -109,6 +109,7 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
-    <string name="about_string">This Application consists of four tabs called Search , Schedule , Nearby, Details. </string>
+    <string name="about_string">This Application consists of four tabs called Search , Schedule , Nearby, Details. \n In Search you can find bus for the journey by entering destination. Also can filter according to Date and time.\n In Schedule tab you can find bus time table according to the searched route depending on the daily schedule, \n In near by tab, you can find suitable bus near the your location. \n Once you have entered the search you will get bus details from which you can obtain the route details.
+                                </string>
 
 </resources>
